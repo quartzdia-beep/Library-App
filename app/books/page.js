@@ -1,4 +1,4 @@
-import { getBooks, returnBook } from '@/lib/actions';
+import { getBooks, returnBook, renewBook } from '@/lib/actions';
 import Card from '@/components/ui/Card';
 import Link from 'next/link';
 import Button from '@/components/ui/Button';
@@ -47,10 +47,24 @@ export default async function BooksPage() {
                             </span>
 
                             {book.status === 'Borrowed' ? (
-                                <form action={returnBook}>
-                                    <input type="hidden" name="bookId" value={book.id} />
-                                    <Button type="submit" variant="outline" style={{ fontSize: '0.875rem', padding: '0.25rem 0.75rem' }}>Return</Button>
-                                </form>
+                                <div style={{ display: 'flex', gap: '0.5rem' }}>
+                                    <form action={renewBook}>
+                                        <input type="hidden" name="bookId" value={book.id} />
+                                        <Button
+                                            type="submit"
+                                            variant="secondary"
+                                            style={{ fontSize: '0.875rem', padding: '0.25rem 0.75rem' }}
+                                            disabled={(book.renewal_count || 0) >= 3}
+                                            title={(book.renewal_count || 0) >= 3 ? "Maximum renewals reached" : "Renew for 14 days"}
+                                        >
+                                            Renew ({(book.renewal_count || 0)}/3)
+                                        </Button>
+                                    </form>
+                                    <form action={returnBook}>
+                                        <input type="hidden" name="bookId" value={book.id} />
+                                        <Button type="submit" variant="outline" style={{ fontSize: '0.875rem', padding: '0.25rem 0.75rem' }}>Return</Button>
+                                    </form>
+                                </div>
                             ) : (
                                 <Link href={`/books/borrow/${book.id}`}>
                                     <Button variant="outline" style={{ fontSize: '0.875rem', padding: '0.25rem 0.75rem' }}>Borrow</Button>
