@@ -44,6 +44,10 @@ export default function RegisterMemberPage() {
                         <Input name="email" type="email" required placeholder="e.g. john@example.com" />
                     </div>
                     <div>
+                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Phone Number</label>
+                        <Input name="phone" placeholder="e.g. 555-0123" />
+                    </div>
+                    <div>
                         <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Apartment Number</label>
                         <Input name="apartmentNumber" required placeholder="e.g. 4B" />
                     </div>

@@ -21,6 +21,7 @@ export default async function MembersPage() {
                         <tr style={{ borderBottom: '1px solid var(--border)', textAlign: 'left' }}>
                             <th style={{ padding: '1rem', fontWeight: '600' }}>Name</th>
                             <th style={{ padding: '1rem', fontWeight: '600' }}>Email</th>
+                            <th style={{ padding: '1rem', fontWeight: '600' }}>Phone</th>
                             <th style={{ padding: '1rem', fontWeight: '600' }}>Apt No.</th>
                             <th style={{ padding: '1rem', fontWeight: '600' }}>Role</th>
                             <th style={{ padding: '1rem', fontWeight: '600' }}>Joined</th>
@@ -31,6 +32,7 @@ export default async function MembersPage() {
                             <tr key={member.id} style={{ borderBottom: '1px solid var(--border)' }}>
                                 <td style={{ padding: '1rem' }}>{member.name}</td>
                                 <td style={{ padding: '1rem', color: 'var(--text-muted)' }}>{member.email}</td>
+                                <td style={{ padding: '1rem', color: 'var(--text-muted)' }}>{member.phone || '-'}</td>
                                 <td style={{ padding: '1rem' }}>{member.apartmentNumber || member.apartment_number || member.apartmentnumber}</td>
                                 <td style={{ padding: '1rem' }}>
                                     <span style={{

@@ -25,8 +25,8 @@ export default function AddBookPage() {
                         <Input name="author" required placeholder="e.g. F. Scott Fitzgerald" />
                     </div>
                     <div>
-                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>ISBN</label>
-                        <Input name="isbn" required placeholder="e.g. 9780743273565" />
+                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>ISBN (Optional)</label>
+                        <Input name="isbn" placeholder="e.g. 9780743273565" />
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '1rem' }}>
                         <Button type="submit">Add Book</Button>
