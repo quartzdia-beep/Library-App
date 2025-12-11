@@ -31,7 +31,7 @@ export default async function MembersPage() {
                             <tr key={member.id} style={{ borderBottom: '1px solid var(--border)' }}>
                                 <td style={{ padding: '1rem' }}>{member.name}</td>
                                 <td style={{ padding: '1rem', color: 'var(--text-muted)' }}>{member.email}</td>
-                                <td style={{ padding: '1rem' }}>{member.apartmentNumber}</td>
+                                <td style={{ padding: '1rem' }}>{member.apartmentNumber || member.apartment_number || member.apartmentnumber}</td>
                                 <td style={{ padding: '1rem' }}>
                                     <span style={{
                                         padding: '0.25rem 0.75rem',

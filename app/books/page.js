@@ -29,7 +29,7 @@ export default async function BooksPage() {
 
                             {book.status === 'Borrowed' && (
                                 <div style={{ fontSize: '0.875rem', padding: '0.5rem', backgroundColor: 'rgba(245, 158, 11, 0.1)', borderRadius: 'var(--radius)', marginBottom: '1rem' }}>
-                                    <p style={{ color: 'var(--accent)', fontWeight: '500' }}>Due: {book.dueDate}</p>
+                                    <p style={{ color: 'var(--accent)', fontWeight: '500' }}>Due: {book.due_date}</p>
                                 </div>
                             )}
                         </div>
@@ -46,19 +46,15 @@ export default async function BooksPage() {
                                 {book.status}
                             </span>
 
-                            {book.status === 'Available' ? (
+                            {book.status === 'Borrowed' ? (
+                                <form action={returnBook}>
+                                    <input type="hidden" name="bookId" value={book.id} />
+                                    <Button type="submit" variant="outline" style={{ fontSize: '0.875rem', padding: '0.25rem 0.75rem' }}>Return</Button>
+                                </form>
+                            ) : (
                                 <Link href={`/books/borrow/${book.id}`}>
                                     <Button variant="outline" style={{ fontSize: '0.875rem', padding: '0.25rem 0.75rem' }}>Borrow</Button>
                                 </Link>
-                            ) : (
-                                <form action={async () => {
-                                    'use server';
-                                    const formData = new FormData();
-                                    formData.append('bookId', book.id);
-                                    await returnBook(formData);
-                                }}>
-                                    <Button type="submit" variant="outline" style={{ fontSize: '0.875rem', padding: '0.25rem 0.75rem' }}>Return</Button>
-                                </form>
                             )}
                         </div>
                     </Card>
